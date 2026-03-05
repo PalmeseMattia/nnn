@@ -2,6 +2,8 @@
 
 **N**ot **N**ut **N**etworks - A simple header-only neural network library in C.
 
+<video src="assets/2026-03-05 11-07-32.mp4" controls></video>
+
 > Please consult the `examples/` folder to see how to use this shit.
 
 ---
