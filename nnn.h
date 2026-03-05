@@ -85,15 +85,13 @@ void forward(Network *net)
     for (int i = 0; i < net->n_layers - 1; i++)
     {
         // z[i] = W[i] * a[i] + b[i]
-        mat_init(net->z[i], 0);  // azzera prima di mat_mul (usa +=)
+        mat_init(net->z[i], 0);
         mat_mul(net->z[i], net->weights[i], net->a[i]);
         mat_add(net->z[i], net->z[i], net->biases[i]);
 
         // a[i+1] = activation(z[i])
         for (int j = 0; j < net->z[i]->rows; j++)
-        {
             net->a[i + 1]->p_data[j] = ReLu(net->z[i]->p_data[j]);
-        }
     }
 }
 
@@ -229,9 +227,7 @@ void mat_free(Mat *mat)
 void mat_init(Mat *mat, float value)
 {
     for (int i = 0; i < mat->rows * mat->columns; i++)
-    {
         mat->p_data[i] = value;
-    }
 }
 
 /**
