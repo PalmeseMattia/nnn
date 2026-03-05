@@ -210,6 +210,27 @@ Network *network_alloc(size_t n_layers, size_t neurons[])
 }
 
 /**
+ * Free a network
+ */
+void network_free(Network *net)
+{
+    if (!net) return;
+    for (size_t i = 0; i < net->n_layers - 1; i++)
+    {
+        mat_free(net->a[i]);
+        mat_free(net->z[i]);
+        mat_free(net->weights[i]);
+        mat_free(net->biases[i]);
+    }
+    mat_free(net->a[net->n_layers - 1]);
+    NNN_FREE(net->a);
+    NNN_FREE(net->z);
+    NNN_FREE(net->weights);
+    NNN_FREE(net->biases);
+    NNN_FREE(net);
+}
+
+/**
  * Free a matrix
  */
 void mat_free(Mat *mat)
