@@ -133,7 +133,7 @@ int main(int argc, char *argv[])
 
     printf("MNIST Training - Epochs: %d, Samples: %d, LR: %.4f\n\n", epochs, train_samples, lr);
 
-    MnistDataset *ds = mnist_load("../train-images.idx3-ubyte", "../train-labels.idx1-ubyte");
+    MnistDataset *ds = mnist_load("./train-images.idx3-ubyte", "./train-labels.idx1-ubyte");
     if (!ds) return 1;
 
     if (train_samples > ds->count) train_samples = ds->count;
